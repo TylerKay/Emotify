@@ -28,7 +28,7 @@ def CreateSpotifyPlaylist():
                                                 scope='user-library-read playlist-modify-private'))
 
     recommendations = sp.recommendations(seed_genres=[genre], target_valence=valence_score, limit=5)
-    playlist_name = 'Recommended Playlist: ' + genre 
+    playlist_name = 'Emotify Playlist: ' + genre 
     playlist_description = 'A playlist based on your valence score.'
     user_id = '1237543937'  # Your Spotify user ID
 
@@ -61,6 +61,7 @@ def CreateSpotifyPlaylist():
         tracks.append(trackObj)
         # print(track['track']['name'], "by", track['track']['artists'][0]['name'])
         # tracks.append(track['track']['name'], track['track']['artists'][0]['name'])
+    
 #   
     return str(tracks)
     # return str(tracks)

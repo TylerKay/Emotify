@@ -17,7 +17,7 @@ import Home from "../components/home/Home";
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
 
 
   return (
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </> : null}
 
         {currentStep === 2 ? <>
-          <>Step 1</>
+          <Home />
           <Auth>
             <Nav />
             <div>

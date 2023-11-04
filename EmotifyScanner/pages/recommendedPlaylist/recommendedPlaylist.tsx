@@ -23,7 +23,6 @@ export default function RecommendedPlaylist() {
                 .catch((error) => {
                     console.error(error);
                 });
-
         }
 
         fetchData();

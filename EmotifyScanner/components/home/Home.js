@@ -1,7 +1,18 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import axios from 'axios';
 import backgroundVideo from './color_grade.jpg'; // Import your video file
 
+import { Auth } from "../menu/Auth";
+import Head from "next/head";
+import { Nav } from "../menu/Nav";
+import { Toolbar } from "../menu/Toolbar";
+import Landing from "../landing/Landing";
+import Face from "../../pages/face/index"
+
 function Home() {
+  const [ playlist, setPlaylist ] = useState([]);
+  const [ displayHume, setDisplayHume ] = useState(false);
+  
   const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -69,6 +80,22 @@ function Home() {
     fontWeight: 'bolder',
     textShadow: '10px 5px 2px rgba(0, 0, 0, 0.8)',
   };
+
+  async function fetchData() {
+    var valenceScore = 0.5;
+
+    axios.get(`http://127.0.0.1:5000/api/create-playlist?valence_score=${valenceScore}`)
+        .then((res) => {
+            var data = res.data;
+            data = data.replace(/'/g, '"');
+            console.log(data)
+            setPlaylist(JSON.parse(data));
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
+
   
 
   const scrollToSection = (elementRef, offset = -50) => {
@@ -76,6 +103,8 @@ function Home() {
       const targetPosition = elementRef.current.offsetTop - offset;
       window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }
+
+      fetchData();
   };
 
   useEffect(() => {
@@ -138,6 +167,36 @@ function Home() {
         </button>
       </div>
       <div style={{ height: '200vh' }}>
+
+      <div>
+            <div>Your Emotion is: {}</div>
+            <div>Response from Flask API: </div>
+
+            {playlist.length > 0 ? 
+                <div>
+                    {playlist.map((item, index) => (
+                        <div key={index}>
+                            <p>{item.name} -  {item.artist}</p>
+                            {/* <p>{item.name}</p> */}
+                            {/* <p>{item.artist} </p> */}
+                        </div>
+                    ))}
+                </div>
+                : null}
+
+
+          <Auth>
+            <Nav />
+            <div>
+              <Face />
+            </div>
+            <Toolbar />
+          </Auth>
+            
+
+
+
+        </div>
       </div>
     </div>
   );
