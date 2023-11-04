@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.hero {
+  height: 750px;
+  background-image: url('https://resilience-blog.com/wp-content/uploads/2022/06/cover-HD-scaled.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #caf0f8;
+  display: flex;
+  flex-direction: column; /* Set the flex direction to column */
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 12rem;
+  color: #21de65;
+  font-family: Verdana;
+  font-weight: bolder;
+  text-shadow: 10px 5px 2px rgba(0, 0, 0, 0.8);
+  margin-top: 100px;
+}
+
+.hero p{
+  font-size: 18px; /* Adjust font size */
+}
+
+.emotify{
+  height:750px;
+  background-color: #f5cac3;
+}
+
+.playlist{
+  height:750px;
+  background-color: #d8f3dc;
+}
+
+.link {
+  text-decoration: none; /* To remove any underline or decoration */
+  display: flex; /* Use flex display for centering */
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  padding: 20px; /* Add padding as needed */
+  font-weight: 700;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
