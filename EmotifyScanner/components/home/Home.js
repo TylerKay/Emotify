@@ -82,7 +82,8 @@ function Home() {
   };
 
   async function fetchData() {
-    var valenceScore = 0.5;
+    // var valenceScore = 0.5;
+    const valenceScore = String(localStorage.getItem('valence_score'));
 
     axios.get(`http://127.0.0.1:5000/api/create-playlist?valence_score=${valenceScore}`)
         .then((res) => {
@@ -183,6 +184,8 @@ function Home() {
                     ))}
                 </div>
                 : null}
+
+              
 
 
           {/* <Auth>

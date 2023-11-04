@@ -19,7 +19,7 @@ def hello():
 def CreateSpotifyPlaylist():
     valence_score = request.args.get('valence_score')
     # valence_score = 0.5
-    genre = 'metal'
+    genre = 'pop'
 
     # sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='b82386d0a887488a927060be6dce7148', client_secret='e8c91cd0e7ea471aa30785a538ed0833',redirect_uri='YOUR_REDIRECT_URI',scope='user-library-read'))
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='980f3d478b7b4692991c81d636accdc1',

@@ -7,9 +7,10 @@ export default function RecommendedPlaylist() {
     const [ playlist, setPlaylist ] = useState([]);
 
 
-    const valenceScore = String(0.5);
+    // const valenceScore = String(0.5);
     // UNCOMMENT OUT LATER 
-    // const valenceScore = String(localStorage.getItem('valence_score'));
+    const valenceScore = String(localStorage.getItem('valence_score'));
+    console.log("VALENCE1: ", valenceScore)
     // console.log("VALENCE: ", valenceScore)
 
     useEffect(() => {
@@ -45,6 +46,8 @@ export default function RecommendedPlaylist() {
                     ))}
                 </div>
                 : null}
+
+            {valenceScore}
             
 
 

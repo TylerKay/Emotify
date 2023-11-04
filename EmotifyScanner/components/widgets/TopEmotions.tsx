@@ -9,6 +9,28 @@ type TopEmotionsProps = {
 export function TopEmotions({ className, emotions, numEmotions }: TopEmotionsProps) {
   className = className || "";
 
+  // Sort the emotions array in descending order
+  const sortedEmotions = emotions.slice().sort((a: Emotion, b: Emotion) => b.score - a.score);
+
+  // Select the top `numEmotions`
+  const topEmotions = sortedEmotions.slice(0, 2);
+  // Calculate the sum of emotion scores
+  const sumOfScores = topEmotions.reduce((sum, emotion) => sum + emotion.score, 0);
+
+
+  
+  // useEffect(() => {
+  //   // Calculate the mean value and store it after 5 seconds
+  //   const timeout = setTimeout(() => {
+      
+  //   }, 5000);
+
+  //   // Cleanup the timeout to prevent memory leaks
+  //   return () => clearTimeout(timeout);
+  // }, [sumOfScores]);
+
+  localStorage.setItem('valence_score', String(sumOfScores / 2));
+
   return (
     <div className={`${className}`}>
       {emotions
