@@ -185,19 +185,6 @@ function Home() {
                 </div>
                 : null}
 
-              
-
-
-          {/* <Auth>
-            <Nav />
-            <div>
-              <Face />
-            </div>
-            <Toolbar />
-          </Auth>
-             */}
-
-
 
         </div>
       </div>
