@@ -17,7 +17,7 @@ import Home from "../components/home/Home";
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [currentStep, setCurrentStep] = useState(3);
+  const [currentStep, setCurrentStep] = useState(1);
 
 
   return (
