@@ -185,14 +185,14 @@ function Home() {
                 : null}
 
 
-          <Auth>
+          {/* <Auth>
             <Nav />
             <div>
               <Face />
             </div>
             <Toolbar />
           </Auth>
-            
+             */}
 
 
 
