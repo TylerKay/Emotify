@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-import backgroundVideo from './color_grade.jpg'; // Import your video file
+import backgroundImage from './webHome.jpg'; // Import your video file
 
 import { Auth } from "../menu/Auth";
 import Head from "next/head";
@@ -20,6 +20,8 @@ function Home() {
     alignItems: 'center',
     minHeight: '100vh',
     position: 'relative',
+    background: `url(${backgroundImage}) center fixed no-repeat`,
+    backgroundSize: 'cover',
   };
 
   const titleStyle = {
@@ -35,11 +37,11 @@ function Home() {
   const buttonStyle = {
     backgroundColor: 'black',
     color: 'white',
-    fontSize: '2rem',
+    fontSize: '3rem',
     fontFamily: 'Rockwell',
-    padding: '10px 50px',
+    padding: '50px 90px',
     cursor: 'pointer',
-    marginTop: '30px',
+    marginTop: '10px',
     boxShadow: '10px 5px 2px rgba(0, 0, 0, 0.05)',
     zIndex: 1,
   };
@@ -135,31 +137,19 @@ function Home() {
         <source src={backgroundVideo} type="video/mp4" />
       </video>
       <h1 style={titleStyle}>EMOTIFY</h1>
-      <button
+      {/* <button
         style={buttonStyle}
         onClick={() => scrollToSection(videoRef, 50)} // Adjust the offset to control scrolling distance
       >
         Find your playlist
-      </button>
+      </button> */}
       <div style={{ height: '100vh' }}>
       </div>
-      <div id="facecam-container" style={{ background: 'none', padding: '20px', zIndex: 1 }}>
+      {/* <div id="facecam-container" style={{ background: 'none', padding: '20px', zIndex: 1 }}>
         <video ref={videoRef} autoPlay playsInline style={facecamStyle} />
-      </div>
+      </div> */}
       <div style={textContainerStyle}>
-        <div style={textContentStyle}>
-          Your mood:
-          <br />
-          <br />
-          *Insert mood and score here*
-          <br />
-          <br />
-          <br />
-          Playlist based on your mood:
-          <br />
-          <br />
-          *insert playlist here*
-        </div>
+       
         <button
           style={buttonStyle}
           onClick={() => scrollToSection({ current: { offsetTop: document.body.scrollHeight } }, 0)}
