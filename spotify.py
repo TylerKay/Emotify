@@ -18,6 +18,8 @@ def hello():
 @app.route('/api/create-playlist', methods=['GET'])
 def CreateSpotifyPlaylist():
     valence_score = request.args.get('valence_score')
+    if valence_score == None:
+        valence_score = 0.5
     # valence_score = 0.5
     genre = 'pop'
 
@@ -37,6 +39,9 @@ def CreateSpotifyPlaylist():
 
 
     track_uris = [track['uri'] for track in recommendations['tracks']]
+    
+    # Get each tracks images
+    track_images = [track['album']['images'][0]['url'] for track in recommendations['tracks']]
     sp.user_playlist_add_tracks(user_id, playlist['id'], track_uris)
 
     #Replace 'your_user_id' with your Spotify user ID, and adjust the playlist name and description as needed.
@@ -56,7 +61,8 @@ def CreateSpotifyPlaylist():
     for track in playlist['tracks']['items']:
         trackObj = {
             "name": track['track']['name'],
-            "artist": track['track']['artists'][0]['name']
+            "artist": track['track']['artists'][0]['name'],
+            "image": track['track']['album']['images'][0]['url']
         }
         tracks.append(trackObj)
         # print(track['track']['name'], "by", track['track']['artists'][0]['name'])

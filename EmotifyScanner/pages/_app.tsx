@@ -10,7 +10,7 @@ import { Auth } from "../components/menu/Auth";
 import Head from "next/head";
 import { Nav } from "../components/menu/Nav";
 import { Toolbar } from "../components/menu/Toolbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Landing from "../components/landing/Landing";
 import RecommendedPlaylist from "./recommendedPlaylist/recommendedPlaylist"
 import Home from "../components/home/Home";
@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const containerStyle = {
     backgroundImage: `url(${backgroundImageUrl})`,
+    backgroundColor: 'white',
     backgroundSize: 'fill',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -96,8 +97,6 @@ export default function App({ Component, pageProps }: AppProps) {
         });
     }
 
-  
-
   const scrollToSection = (elementRef, offset = -50) => {
     if (elementRef && elementRef.current) {
       const targetPosition = elementRef.current.offsetTop - offset;
@@ -105,6 +104,7 @@ export default function App({ Component, pageProps }: AppProps) {
     }
 
       fetchData();
+
   };
 
   return (
@@ -176,38 +176,38 @@ export default function App({ Component, pageProps }: AppProps) {
               <video ref={videoRef} autoPlay playsInline style={facecamStyle} />
             </div> */}
             <div style={textContainerStyle}>
-            
-              <button
-                style={buttonStyle}
-                onClick={() => scrollToSection({ current: { offsetTop: document.body.scrollHeight } }, 0)}>
+              <button style={buttonStyle} onClick={() => scrollToSection({ current: { offsetTop: document.body.scrollHeight } }, 0)}>
                 See playlist
               </button>
-
             </div>
+
             <div style={{ height: '120vh' }}>
 
-            <div>
-        
 
-                  {playlist.length > 0 ? 
-                      <div>
-                          {playlist.map((item, index) => (
-                              <div key={index}>
-                                  <p>{item.name} -  {item.artist}</p>
-                                  {/* <p>{item.name}</p> */}
-                                  {/* <p>{item.artist} </p> */}
-                              </div>
-                          ))}
-                      </div>
-                      : null}
-            </div>
           <div style={{ textAlign: 'center', marginTop: '100px' }}>
-          <Auth>
-            <Nav />
-            <Component {...pageProps} />
-          </Auth>
-          <Toolbar />
+            <Auth>
+              <Nav />
+              <Component {...pageProps} />
+            </Auth>
+            <Toolbar />
          </div>
+
+         <div>
+          {playlist.length > 0 ? 
+            <div>
+              {playlist.map((item, index) => (
+                <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+                  <img src={item.image} style={{ width: "100px", height: "100px", marginRight: "10px" }} />
+                  <div>
+                    <p style={{ color: "black", fontSize: "16px" }}>{item.name} - {item.artist}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            : null}
+        </div>
+
+         
        </div>
       </div>
 
