@@ -103,7 +103,7 @@ export default function App({ Component, pageProps }: AppProps) {
       window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }
 
-      fetchData();
+      // fetchData();
 
   };
 
@@ -176,8 +176,8 @@ export default function App({ Component, pageProps }: AppProps) {
               <video ref={videoRef} autoPlay playsInline style={facecamStyle} />
             </div> */}
             <div style={textContainerStyle}>
-              <button style={buttonStyle} onClick={() => scrollToSection({ current: { offsetTop: document.body.scrollHeight } }, 0)}>
-                See playlist
+              <button style={buttonStyle} onClick={() => scrollToSection({ current: { offsetTop: -10 } }, 0)}>
+                Find your playlist
               </button>
             </div>
 
@@ -189,7 +189,21 @@ export default function App({ Component, pageProps }: AppProps) {
               <Nav />
               <Component {...pageProps} />
             </Auth>
-            <Toolbar />
+            {/* <Toolbar /> */}
+            <button style={{
+                backgroundColor: 'black',
+                color: 'white',
+                fontSize: '2rem',
+                fontFamily: 'Rockwell',
+                padding: '10px 50px',
+                cursor: 'pointer',
+                marginBottom: '50px', 
+                boxShadow: '10px 5px 2px rgba(0, 0, 0, 0.05)',
+                zIndex: 1,
+              }} onClick={() => scrollToSection({ current: { offsetTop: document.body.scrollHeight } }, 0)}
+            >
+              See playlist
+            </button>
          </div>
 
          <div>

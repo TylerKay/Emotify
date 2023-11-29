@@ -23,16 +23,16 @@ def CreateSpotifyPlaylist():
     # valence_score = 0.5
     genre = 'pop'
 
-    # sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='b82386d0a887488a927060be6dce7148', client_secret='e8c91cd0e7ea471aa30785a538ed0833',redirect_uri='YOUR_REDIRECT_URI',scope='user-library-read'))
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='980f3d478b7b4692991c81d636accdc1',
-                                                client_secret='701ef9e9a9784fc78bcad9822b46c281',
+    # sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='', client_secret='',redirect_uri='YOUR_REDIRECT_URI',scope='user-library-read'))
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id='',
+                                                client_secret='',
                                                 redirect_uri='http://localhost:8888/callback',
                                                 scope='user-library-read playlist-modify-private'))
 
     recommendations = sp.recommendations(seed_genres=[genre], target_valence=valence_score, limit=5)
     playlist_name = 'Emotify Playlist: ' + genre 
     playlist_description = 'A playlist based on your valence score.'
-    user_id = '1237543937'  # Your Spotify user ID
+    user_id = ''  # Your Spotify user ID
 
     playlist = sp.user_playlist_create(sp.me()['id'], name=playlist_name, public=False, description=playlist_description)
     # print("test3")
